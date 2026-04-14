@@ -1,5 +1,8 @@
-# Pipeline output — run main.py to regenerate locally
-output/
+# Pipeline output — CSVs are large/regenerable, keep them out
+output/*.csv
+
+# PNGs are committed so they display in the README on GitHub
+# (output/*.png is intentionally NOT ignored)
 
 # Quarto render cache — not needed in the repo
 .quarto/
