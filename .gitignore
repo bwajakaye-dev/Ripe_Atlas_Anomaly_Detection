@@ -1,0 +1,25 @@
+# Generated output — users run the pipeline to produce these locally
+output/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+
+# Sensitive files — never commit these
+kc-download-recovery-codes.txt
+*.key
+*.pem
+secrets.txt
+
+# OS noise
+.DS_Store
+Thumbs.db

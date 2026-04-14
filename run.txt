@@ -1,0 +1,8 @@
+# Fetch 2 weeks of data from built-in measurement 1001 (30 probes, ~2-3 min):
+python ripe\main.py --collect --start 2024-01-01 --end 2024-01-14
+
+# Subsequent runs using existing CSV (no network call):
+python ripe\main.py
+
+# Adjust anomaly sensitivity (default contamination=0.05, min-votes=2):
+python ripe\main.py --contamination 0.03 --min-votes 3
