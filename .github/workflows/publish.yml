@@ -1,0 +1,52 @@
+name: Render and Publish to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # allows manual trigger from the Actions tab
+
+permissions:
+  contents: write    # needed to push the rendered docs/
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install pandas numpy scikit-learn matplotlib jupyter nbformat
+
+      - name: Install Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Fetch RIPE Atlas data
+        env:
+          RIPE_ATLAS_API_KEY: ${{ secrets.RIPE_ATLAS_API_KEY }}
+        run: python main.py --collect --start 2024-01-01 --end 2024-01-14
+        # If the fetch fails (e.g. no API key), the render step below will
+        # show a clear error message in the published page.
+        continue-on-error: true
+
+      - name: Run anomaly detection (if data was collected)
+        run: python main.py
+        continue-on-error: true
+
+      - name: Render Quarto site
+        run: quarto render
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages

@@ -1,5 +1,9 @@
-# Generated output — users run the pipeline to produce these locally
+# Pipeline output — run main.py to regenerate locally
 output/
+
+# Quarto render cache — not needed in the repo
+.quarto/
+*_files/
 
 # Python cache
 __pycache__/
@@ -23,3 +27,6 @@ secrets.txt
 # OS noise
 .DS_Store
 Thumbs.db
+
+/.quarto/
+**/*.quarto_ipynb

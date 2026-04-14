@@ -1,0 +1,31 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "RIPE Atlas — Network Anomaly Detection"
+  description: "Detecting network performance anomalies using RIPE Atlas ping measurements and data mining techniques"
+  navbar:
+    background: dark
+    foreground: light
+    title: "RIPE Atlas Anomaly Detection"
+    right:
+      - icon: github
+        href: https://github.com
+  page-footer:
+    center: "Advanced Data Mining — Spring 2026"
+
+format:
+  html:
+    theme: cosmo
+    highlight-style: github
+    toc: true
+    toc-depth: 3
+    toc-title: "Contents"
+    code-fold: true
+    code-summary: "Show code"
+    code-tools: true
+    fig-align: center
+    fig-width: 11
+    fig-height: 5
+    embed-resources: true
