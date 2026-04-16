@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 # API key: set RIPE_ATLAS_API_KEY env var, or paste key here as fallback
-API_KEY = os.environ.get("RIPE_ATLAS_API_KEY", "8a876b9c-bd77-44f3-b81c-c90301340047")
+API_KEY = os.environ.get("RIPE_ATLAS_API_KEY", "Paste_your_api_key_here")
 
 # Built-in measurement 1001: continuous global ping to k.root-servers.net.
 # Guaranteed to have data for any date since 2010. No API key needed.
