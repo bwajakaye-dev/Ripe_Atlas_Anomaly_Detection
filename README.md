@@ -57,7 +57,7 @@ visualization.py        ← 6 plots → output/*.png
 
 ![RTT Time Series](output/plot_rtt_timeseries.png)
 
-The time series shows mean RTT across all 30 probes over the 2-week window. **Red points are ensemble anomalies** — measurements flagged by at least 2 of the 5 detectors. Anomalous spikes are short-lived (1–3 consecutive measurements) before the probe returns to its baseline, consistent with transient routing events rather than sustained outages.
+This time series shows the global average RTT to k.root-servers.net, with anomalies marked as spikes, highlighting intermittent but severe latency events across the RIPE Atlas network. The baseline RTT remains low and stable for most periods, but several extreme spikes (reaching >10,000 ms) indicate significant transient disruptions—likely due to routing instability, congestion, or probe-level connectivity failures rather than sustained global outages. The irregular and short-lived nature of these spikes suggests that most anomalies are localized or regional events, rather than systemic failures of the root DNS infrastructure.
 
 ---
 
@@ -81,7 +81,7 @@ The heatmap shows mean RTT broken down by hour of day (UTC) and day of week. A c
 
 ![Score Scatter](output/plot_score_scatter.png)
 
-Each point is one probe measurement plotted by its Isolation Forest score (x-axis) vs LOF score (y-axis). **Red = ensemble anomaly, blue = normal.** The two ML methods agree closely — anomalous points cluster in the upper-right high-score corner — confirming they identify the same underlying population of anomalous measurements. Points flagged by one but not the other (upper-left and lower-right fringes) represent borderline cases that the ensemble correctly sets aside.
+This plot compares anomaly detection outputs from Isolation Forest (x-axis) and Local Outlier Factor (LOF) (y-axis), revealing a weak but non-linear agreement between the two models. Most normal observations cluster tightly at low LOF scores (~1–2) and moderate Isolation Forest scores (~0.35–0.55), indicating stable baseline network performance across RIPE Atlas probes. However, anomalies (red points) are widely dispersed—particularly with extreme LOF values (up to ~16)—showing that LOF is more sensitive to local density deviations, while Isolation Forest captures more global isolation patterns, leading to partial disagreement in anomaly classification.
 
 ---
 
