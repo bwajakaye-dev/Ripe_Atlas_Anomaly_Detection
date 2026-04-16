@@ -1,6 +1,6 @@
 # Network Performance Anomaly Detection using RIPE Atlas
 
-An end-to-end data mining pipeline that fetches real-world network measurement data from [RIPE Atlas](https://atlas.ripe.net), engineers time-series features, and applies five complementary anomaly detection algorithms to identify unusual patterns in latency, jitter, and packet loss.
+An end-to-end data mining pipeline that fetches real-world network measurement data from [RIPE Atlas](https://atlas.ripe.net/measurements/1001/overview), engineers time-series features, and applies five complementary anomaly detection algorithms to identify unusual patterns in latency, jitter, and packet loss.
 
 ---
 
@@ -17,7 +17,7 @@ This project applies data mining techniques to RIPE Atlas ping measurements to:
 
 ## Data Source
 
-[RIPE Atlas](https://atlas.ripe.net) is the world's largest active Internet measurement network, operated by RIPE NCC. Thousands of hardware probes deployed in homes, universities, and data centres across 200+ countries continuously measure Internet reachability and performance.
+[RIPE Atlas](https://atlas.ripe.net/measurements/1001/overview) is the world's largest active Internet measurement network, operated by RIPE NCC. Thousands of hardware probes deployed in homes, universities, and data centres across 200+ countries continuously measure Internet reachability and performance.
 
 **Measurement used:** Built-in measurement **1001** — a continuous global ping to `k.root-servers.net`, running every 240 seconds on all active probes since 2010.
 
