@@ -65,7 +65,7 @@ This time series shows the global average RTT to k.root-servers.net, with anomal
 
 ![RTT Distribution by Probe](output/plot_rtt_distribution.png)
 
-Box plots reveal strong **geographic baseline separation**. European probes (lower IDs) measure ~5–15 ms to the Amsterdam-hosted root server, while Asia-Pacific and North American probes measure 70–250 ms. This is why anomaly detection is applied **per-probe** — a high absolute RTT is normal for a distant probe but anomalous for a nearby one.
+This plot shows the distribution of RTT values across the most active probes, highlighting significant variability in latency behavior between probes. While most measurements cluster near low RTT values (indicated by dense points near the bottom), several probes (notably 630 and 6352) exhibit extreme outliers reaching 3000–5500 ms, indicating intermittent but severe degradation. The presence of heavy-tailed distributions suggests that anomalies are probe-specific and likely driven by local network conditions (ISP routing, congestion, or hardware instability) rather than global infrastructure issues.
 
 ---
 
@@ -89,7 +89,7 @@ This plot compares anomaly detection outputs from Isolation Forest (x-axis) and 
 
 ![Detector Comparison](output/plot_detector_comparison.png)
 
-Each detector flags a different number of anomalies. Statistical methods (Z-Score, IQR) tend to be more conservative; ML methods (Isolation Forest, LOF) flag more because they consider multivariate patterns. The Rolling Z-Score catches the most because it is sensitive to any local spike relative to a short recent window. The **Ensemble (≥2 votes)** bar shows the reduced, higher-confidence set retained after requiring agreement between detectors.
+This bar chart compares anomaly detection sensitivity across different methods, revealing substantial variation in detection behavior. The IQR method flags an extremely high number of anomalies (4757), indicating it is overly sensitive to dispersion and likely over-detecting outliers, whereas Z-score and ensemble methods (~140) are much more conservative. Isolation Forest and LOF produce identical counts (1258), suggesting similar decision boundaries in this dataset, while the rolling Z-score detects none—implying poor responsiveness to non-stationary or spike-based anomalies in this context.
 
 ---
 
